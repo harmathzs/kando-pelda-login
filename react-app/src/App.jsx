@@ -32,7 +32,9 @@ export default class App extends React.Component {
         </Container>
 
         {this.state.isLoggedIn 
-        ? <p style={{color: 'white'}}>Logged in as {this.state.loggedInName}!</p> 
+        ? <p style={{color: 'white'}}>Logged in as {this.state.loggedInName}! 
+            <button onClick={()=>this.setState({isLoggedIn: false})}>Logout</button>
+        </p> 
         : <LoginForm onLoginSuccess={this.handleLoginSuccess} />
         }
 
