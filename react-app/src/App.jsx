@@ -19,6 +19,11 @@ export default class App extends React.Component {
     loggedInName: '',
   }
 
+  // callback function
+  handleLoginSuccess = username => {
+    this.setState({ isLoggedIn: true, loggedInName: username });
+  };  
+
   render() {
     return <div>
       <Navbar bg="dark" variant="dark" fixed="top" style={{padding: '5px'}}>
@@ -27,8 +32,8 @@ export default class App extends React.Component {
         </Container>
 
         {this.state.isLoggedIn 
-        ? <p>Logged in as {this.state.loggedInName}!</p> 
-        : <LoginForm />
+        ? <p style={{color: 'white'}}>Logged in as {this.state.loggedInName}!</p> 
+        : <LoginForm onLoginSuccess={this.handleLoginSuccess} />
         }
 
       </Navbar>

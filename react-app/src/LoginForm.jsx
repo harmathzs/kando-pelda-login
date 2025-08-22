@@ -28,7 +28,10 @@ export default class LoginForm extends React.Component {
         })
         .then(res=>res.json())
         .then(res=>{
-            console.log('res', res);
+            //console.log('res', res);
+            if (res.loggedin) {
+                this.props.onLoginSuccess(this.state.username);
+            }
         })
         .catch(console.warn);
     }
