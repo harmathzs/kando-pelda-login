@@ -12,19 +12,13 @@ app.post('/login', (req, res) => {
         },
     ];
 
-    //console.log('req', req);
     console.log('body', req.body);
 
-    const username = req.body.username;
-    const password = req.body.password;
+    const { username, password } = req.body;
 
-    let loggedIn = false;
-
-    userPasses.forEach(elem=>{
-        if (elem.username == username && elem.password == password) {
-            loggedIn = true;
-        }
-    });
+    const loggedIn = userPasses.some(
+        user => user.username === username && user.password === password
+    );
 
     if (loggedIn) {
         return res.status(200).json({
