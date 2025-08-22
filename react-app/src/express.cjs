@@ -12,6 +12,9 @@ app.post('/login', (req, res) => {
         },
     ];
 
+    //console.log('req', req);
+    console.log('body', req.body);
+
     const username = req.body.username;
     const password = req.body.password;
 

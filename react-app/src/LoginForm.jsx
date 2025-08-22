@@ -16,11 +16,25 @@ export default class LoginForm extends React.Component {
         e.preventDefault();
         //console.log('state', this.state);
 
-        
+        fetch('http://localhost:3333/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: this.state.username,
+                password: this.state.password,
+            })
+        })
+        .then(res=>res.json())
+        .then(res=>{
+            console.log('res', res);
+        })
+        .catch(console.warn);
     }
 
     render() {
-        return <Form inline>
+        return <Form inline="true">
           <InputGroup>
             <InputGroup.Text>&#128104;</InputGroup.Text>
             <Form.Control
