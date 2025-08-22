@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+import "bootstrap/dist/css/bootstrap.min.css";
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import InputGroup from 'react-bootstrap/InputGroup';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
+export default class App extends React.Component {
+  state = {
+    isLoggedIn: false,
+    loggedInName: '',
+  }
+
+  render() {
+    return <div>
+      <Navbar bg="dark" variant="dark" fixed="top" style={{padding: '5px'}}>
+        <Container>
+          <Navbar.Brand>React-Bootstrap</Navbar.Brand>
+        </Container>
+
+        {this.state.isLoggedIn ? <p>Logged in as {this.state.loggedInName}!</p> : 
+        <Form inline>
+          <InputGroup>
+            <InputGroup.Text>&#128104;</InputGroup.Text>
+            <Form.Control
+              placeholder="Username"
+              aria-label="Username"
+            />
+            <InputGroup.Text>&#x1F512;</InputGroup.Text>
+            <Form.Control
+              type='password'
+              placeholder="Password"
+              aria-label="Password"
+            />
+            <Button>Login</Button>
+          </InputGroup>
+        </Form> }
+
+      </Navbar>
+      <Container>
+        <p>Tip: try joe:screwdriver </p>
+      </Container>
+    </div>
+  }
 }
 
-export default App
+
