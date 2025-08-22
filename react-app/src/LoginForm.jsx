@@ -12,6 +12,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 export default class LoginForm extends React.Component {
+    handleLoginButton = e => {
+        e.preventDefault();
+        //console.log('state', this.state);
+
+        
+    }
+
     render() {
         return <Form inline>
           <InputGroup>
@@ -19,14 +26,16 @@ export default class LoginForm extends React.Component {
             <Form.Control
               placeholder="Username"
               aria-label="Username"
+              onChange={e=>this.setState({username: e.target.value})}
             />
             <InputGroup.Text>&#x1F512;</InputGroup.Text>
             <Form.Control
               type='password'
               placeholder="Password"
               aria-label="Password"
+              onChange={e=>this.setState({password: e.target.value})}
             />
-            <Button>Login</Button>
+            <Button onClick={this.handleLoginButton}>Login</Button>
           </InputGroup>
         </Form>
     }
